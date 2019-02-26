@@ -13,6 +13,7 @@
     <link href="{{asset('/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('/css/main.css')}}" rel="stylesheet">
     <link href="{{asset('/css/responsive.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
     <!-- MetisMenu CSS -->
     <link href="{{asset('/css/metisMenu.min.css')}}" rel="stylesheet">
@@ -308,10 +309,24 @@
                         <a href="{{url('#')}}"><i class="fa fa-user"></i> Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('users.index')}}">Alle users</a>
+                                <a href="{{route('users.index')}}">All users</a>
                             </li>
+
                             <li>
                                 <a href="{{route('users.create')}}">User toevoegen</a>
+                            </li>
+
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="{{url('#')}}"><i class="fa fa-rotate-left"></i> Roles<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('roles.index')}}">All roles</a>
+                            </li>
+                            <li>
+                                <a href="{{route('roles.create')}}">Create Roles</a>
                             </li>
 
                         </ul>
@@ -434,7 +449,16 @@
 </div>
 
 
+
 <script src="{{asset('/js/jquery.js')}}"></script>
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );
+</script>
 <script src="{{asset('/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('/js/price-range.js')}}"></script>
 <script src="{{asset('/js/jquery.prettyPhoto.js')}}"></script>

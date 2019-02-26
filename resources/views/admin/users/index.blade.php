@@ -4,7 +4,7 @@
 @endif
 @section('content')
     <h1>Users</h1>
-    <table class="table table-striped">
+    <table id="table_id" class="display">
         <thead>
         <tr>
             <th scope="col">Id</th>
@@ -31,7 +31,11 @@
                     <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role ? $user->role->name : 'User without role'}}</td>
-                    <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
+                    <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}
+
+
+
+                    </td>
                     <td>{{$user->created_at}}</td>
                     <td>{{$user->updated_at}}</td>
 

@@ -80,5 +80,6 @@ Route::resource('/brands','BrandsController');
 Route::resource('/categories','CategoryController');
 Route::resource('/subcategories','SubcategoryController');
 Route::resource('/users','AdminUsersController');
+Route::resource('/roles','RolesController');
 
 
