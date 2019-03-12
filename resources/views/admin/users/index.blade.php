@@ -45,4 +45,9 @@
         @endif
         </tbody>
     </table>
+    <div class="row">
+        <div class="col-12">
+           {{ $users->render()}}
+        </div>
+    </div>
 @endsection
