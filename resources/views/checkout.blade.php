@@ -30,6 +30,7 @@
                 </ul>
             </div><!--/checkout-options-->
 
+
             <div class="register-req">
                 <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
             </div><!--/register-req-->

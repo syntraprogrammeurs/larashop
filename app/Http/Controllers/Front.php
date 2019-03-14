@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use Cart;
+Use Braintree;
 
 class Front extends Controller
 {
@@ -64,6 +65,17 @@ class Front extends Controller
     public function logout(){
         return view('logout',array('title' => 'Welcome', 'description'=>'lorem ipsum', 'page'=>'home'));
     }
+    public function welcome(){
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+        $token = $gateway->ClientToken()->generate();
+        return view('cart',compact('token','cart')
+        );
+    }
 
 
     public function cart(){
@@ -95,7 +107,16 @@ class Front extends Controller
         }
 
 
-        return view('cart',array('cart' => $cart, 'title' => 'Welcome', 'description' => 'lorem','page'=>'home'));
+        //return view('cart',array('cart' => $cart, 'title' => 'Welcome', 'description' => 'lorem','page'=>'home'));
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+        $token = $gateway->ClientToken()->generate();
+        return view('cart',compact('token','cart')
+        );
     }
 
     public function clear_cart(){
@@ -103,9 +124,8 @@ class Front extends Controller
         return Redirect::away('cart');
     }
 
-    public function checkout(){
-        return view('checkout',array('title' => 'Welcome', 'description'=>'lorem ipsum', 'page'=>'home'));
-    }
+
+
     public function search($query){
         return view('products',array('title' => 'Welcome', 'description'=>'lorem ipsum', 'page'=>'products'));
     }
