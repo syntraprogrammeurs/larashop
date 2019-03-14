@@ -12,4 +12,11 @@ class Product extends BaseModel
 
     protected $fillable=['name','title','description','price','category_id',
         'brand_id', 'created_at_ip','updated_at_ip'];
+
+    public function brand(){
+        return $this->belongsTo('App\Brand');
+    }
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }

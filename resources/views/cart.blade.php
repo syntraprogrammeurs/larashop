@@ -78,7 +78,7 @@
                                     <span class="input-label">Amount</span>
                                     <div class="input-wrapper amount-wrapper">
                                         <input id="amount" name="amount" type="tel" min="1" placeholder="Amount"
-                                               value="{{Cart::Total()}}">
+                                               value="{{Cart::subTotal()}}">
 
                                     </div>
                                 </label>
@@ -87,7 +87,7 @@
                                 </div>
                             </section>
                             <input id="nonce" name="payment_method_nonce" type="hidden" />
-                            <button class="button" type="submit"><span>Test Transaction</span></button>
+                            <button class="btn btn-primary" type="submit"><span>Test Transaction</span></button>
                         </form>
 
                     </div>

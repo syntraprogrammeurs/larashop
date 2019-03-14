@@ -247,10 +247,10 @@
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }}<i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="{{url('logout')}}"><i class="fa fa-arrow-down"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -276,7 +276,19 @@
                     <li>
                         <a href="index.html"><i class="fas fa-tachometer-alt"></i> DASHBOARD CONTENT</a>
                     </li>
+                    <li>
+                        <a href="{{url('#')}}"><i class="fa fa-exclamation-circle"></i> Products<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('products.index')}}">All Products</a>
+                            </li>
+                            <li>
+                                <a href="{{route('products.create')}}">Create Product</a>
+                            </li>
 
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
                     <li>
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Brands<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -332,6 +344,7 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
 
 
                 </ul>

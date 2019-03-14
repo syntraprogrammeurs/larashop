@@ -56,7 +56,7 @@ Route::post('/checkout', function(Request $request){
         'phone' => '281.330.8004',
         'fax' => '419.555.1235',
         'website' => 'http://example.com'
-    ]);
+    ]);// keuze ofwel naar braintree ofwel naar tabel in database
 
     if ($result->success) {
         $transaction = $result->transaction;
@@ -126,10 +126,11 @@ Route::get('/admin', 'DashboardController@index');
 
 /*brands*/
 
-Route::resource('/brands','BrandsController');
-Route::resource('/categories','CategoryController');
-Route::resource('/subcategories','SubcategoryController');
-Route::resource('/users','AdminUsersController');
-Route::resource('/roles','RolesController');
+Route::resource('brands','BrandsController');
+Route::resource('categories','CategoryController');
+Route::resource('subcategories','SubcategoryController');
+Route::resource('users','AdminUsersController');
+Route::resource('roles','RolesController');
+Route::resource('products', 'ProductsController');
 
 
