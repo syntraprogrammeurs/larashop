@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Product;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
@@ -27,8 +28,23 @@ class Front extends Controller
     }
 
     public function index(){
-        return view('home2',array('title' => 'Welcome', 'description'=>'lorem ipsum', 'page'=>'home',
-            'brands'=>$this->brands, 'categories' => $this->categories, 'products'=>$this->products ));
+        $brands = Brand::all();
+        $categories = Category::all();
+       $products = Product::orderBy('id','desc')->paginate(4);
+        //$countingcategories= Product::groupBy('brand_id')->havingRaw('COUNT(*) >= 1')->get();
+
+
+        $products_brands= DB::table('products')
+            ->join('brands', 'products.brand_id','=', 'brands.id')
+            ->select('brands.name')
+            ->groupBy('brands.name')->get();
+
+
+
+        return view('home2', compact('brands','categories', 'products','products_brands'));
+
+      /*  return view('home2',array('title' => 'Welcome', 'description'=>'lorem ipsum', 'page'=>'home',
+            'brands'=>$this->brands, 'categories' => $this->categories, 'products'=>$this->products ));*/
     }
     public function products(){
         return view('products',array('title' => 'Products listing', 'description'=>'lorem ipsum', 'page'=>'products',

@@ -16,9 +16,9 @@
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="col-sm-6">
-                                <h1><span>{{$title}}</span></h1>
+                                <h1><span></span></h1>
                                 <h2>Free E-Commerce Template</h2>
-                                <p>{{$description}} </p>
+                                <p> </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
@@ -79,7 +79,7 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Features Items</h2>
+                    <h2 class="title text-center">Featured Items</h2>
                     @foreach($products as $product)
 
                     <div class="col-sm-4">
@@ -91,8 +91,7 @@
                                     <p>{{$product->title}}</p>
 
 
-                                    <a href="{{url('cart')}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    <a href="{{url('products/details/$product->id')}}" class="btn btn-default add-to-cart"><i class="fa fa-info"></i>View details</a>
+
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
@@ -111,23 +110,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
 
                     @endforeach
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
+
                 </div><!--features_items-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center">
+                            {{$products->render()}}
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

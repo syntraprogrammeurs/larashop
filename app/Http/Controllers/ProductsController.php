@@ -21,12 +21,10 @@ class ProductsController extends Controller
     public function index()
     {
         //
-        $products =  Product::paginate(2);
+        $products = Product::orderBy('id','desc')->paginate(4);
 
 
-
-
-
+        //$products =  Product::paginate(4);
         return view('admin.products.index', compact('products'));
     }
 
@@ -52,15 +50,17 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         //
-        $input = $request->all();
+        $input = $request->all();//alle velden uit het formulier in $input
         if($file = $request->file('photo_id')){
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo = Photo::create(['file'=>$name]);
-            $input['photo_id'] = $photo->id;
+            $name = time() . $file->getClientOriginalName();//samenstelling bestandsnaam
+            $file->move('images', $name);//het kopieren naar de map images
+            $photo = Photo::create(['file'=>$name]);//in de tabel photo id en naam aanmaken
+            $input['photo_id'] = $photo->id; //
 
         }
         Product::create($input);
+
+
         //$product = new Product();
 
         //$product->create($input);
@@ -103,9 +103,22 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        //dd($request);
-        $product = Product::findOrFail($id);
-        $product->update($request->all());
+
+        $product=Product::findOrFail($id);
+        $input = $request->all();//alle velden uit het formulier in $input
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();//samenstelling bestandsnaam
+            $file->move('images', $name);//het kopieren naar de map images
+            $photo = Photo::create(['file'=>$name]);//in de tabel photo id en naam aanmaken
+            $input['photo_id'] = $photo->id; //
+
+        }
+        $product->update($input);
+
+
+        //$product = new Product();
+
+        //$product->create($input);
         return redirect('/products');
     }
 

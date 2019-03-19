@@ -30,7 +30,9 @@
     <h2>Brands</h2>
     <div class="brands-name">
         <ul class="nav nav-pills nav-stacked">
+            <?php dd($products_brands); ?>
             @foreach($brands as $brand)
+
                 <li><a href="#"> <span class="pull-right">(50)</span>{{$brand->name}}</a></li>
             @endforeach
             {{--    <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
