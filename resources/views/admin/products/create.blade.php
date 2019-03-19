@@ -32,6 +32,10 @@
                 {!! Form::select('brand_id', [''=>'Choose options'] + $brands,null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('photo_id', 'Photo:') !!}
+                {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
+            </div>
+            <div class="form-group">
                 {!! Form::submit('Create Product', ['class'=>'btn btn-primary col-md-6']) !!}
             </div>
 

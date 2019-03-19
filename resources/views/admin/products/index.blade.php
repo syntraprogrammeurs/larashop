@@ -5,7 +5,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
+
             <th scope="col">id</th>
+            <th>afbeelding</th>
             <th scope="col">name</th>
             <th scope="col">title</th>
             <th scope="col">description</th>
@@ -19,7 +21,9 @@
         <tbody>
         @foreach($products as $product)
         <tr>
+
             <th>{{$product->id}}</th>
+            <td><img height="50" src="{{$product->photo ? asset($product->photo->file) : 'http://placehold.it/400x400'}}" alt=""></td>
             <td><a href="{{route('products.edit', $product->id)}}">{{$product->name}}</a></td>
             <td>{{$product->title}}</td>
             <td>{{$product->description}}</td>

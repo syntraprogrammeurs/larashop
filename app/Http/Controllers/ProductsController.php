@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Category;
+use App\Photo;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -52,9 +53,17 @@ class ProductsController extends Controller
     {
         //
         $input = $request->all();
-        $product = new Product();
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
 
-        $product->create($input);
+        }
+        Product::create($input);
+        //$product = new Product();
+
+        //$product->create($input);
         return redirect('/products');
     }
 

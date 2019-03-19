@@ -81,11 +81,12 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
                     @foreach($products as $product)
+
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="images/shop/product12.jpg" alt="" />
+                                    <img src="{{$product->photo ? asset($product->photo->file) : 'http://placehold.it/400x400'}}" alt="" />
                                     <h2>${{$product->price}}</h2>
                                     <p>{{$product->title}}</p>
 
